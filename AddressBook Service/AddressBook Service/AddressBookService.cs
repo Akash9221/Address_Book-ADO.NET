@@ -101,6 +101,36 @@ namespace AddressBook_Service
                 Console.WriteLine(ex.Message);
             }
         }
+        public void UpdateDataInDB(AddressBook address)
+        {
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            try
+            {
+                using (sqlconnection)
+                {
+                    sqlconnection.Open();
+                    SqlCommand command = new SqlCommand("SPUpdateDataInDB", sqlconnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@FirstName", address.FirstName);
+                    command.Parameters.AddWithValue("@Address", address.Address);
+                    command.Parameters.AddWithValue("@MobNo", address.MobNo);
+                    int result = command.ExecuteNonQuery();
+                    sqlconnection.Close();
+                    if (result >= 1)
+                    {
+                        Console.WriteLine("AddressBook Data Updated Successfully");
+                    }
+                    else
+                        Console.WriteLine("No DataBase found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // handle exception here
+                Console.WriteLine(ex.Message);
+            }
+        }
 
     }
     }

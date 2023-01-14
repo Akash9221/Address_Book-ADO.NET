@@ -38,7 +38,18 @@ namespace AddressBook_Service
                     case 2:
                         addressBook.RetrieveEntriesFromAddressBookDB();
                         break;
+                    case 3:
+                        AddressBook address1 = new AddressBook
+                        {
+                            FirstName = "Shreeram",
 
+                            Address = "Mumbai",
+
+                            MobNo = 987654322
+
+                        };
+                        addressBook.UpdateDataInDB(address1);
+                        break;
 
 
                     case 4:
