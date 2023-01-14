@@ -35,8 +35,12 @@ namespace AddressBook_Service
                         };
                         addressBook.AddAddressBookInDB(address);
                         break;
+                    case 2:
+                        addressBook.RetrieveEntriesFromAddressBookDB();
+                        break;
 
-                       
+
+
                     case 4:
                         addressBook.DeleteDataFromDatabase("Akash");
                         break;
